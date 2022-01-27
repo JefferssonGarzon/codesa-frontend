@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="mt-2">Gestion de usuarios</h1>
+    <hr>
+    <div class="container m-3">
+        <label for="search" class="me-3">Nombre:</label>
+        <input [(ngModel)]="search" type="search" name="search" id="search" placeholder="buscar">
+        <button class="btn btn-success d-block mt-3" (click)="openDialogAdd()">
+            Crear usuario <i class="fas fa-user-plus"></i>
+        </button>
+    </div>
+    <div class="table-container">
+        <table class="table tabla">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estado: activo</th>
+                    <th scope="col">Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of usersList | filtrarUsuarioPorNombre:search ; let i = index">
+                    <td> {{ i+1 }} </td>
+                    <td>{{ user.nombre }}</td>
+                    <td> {{ user.activo }} </td>
+                    <td> {{ user.rol.nombre }} </td>
+                    <td>
+                        <button class="btn btn-info me-3" (click)="openDialogEdit(user)">
+                            editar <i class="fas fa-user-edit"></i>
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteUser(user)">
+                            eliminar <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
