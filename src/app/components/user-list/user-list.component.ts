@@ -27,10 +27,8 @@ export class UserListComponent implements OnInit {
 
   getUsers(){
     this.userService.getUsers().subscribe(data => {
-      console.log(data);
       this.usersList = data
       console.log(this.usersList);
-      
     })
   }
 
